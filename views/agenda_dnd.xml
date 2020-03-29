@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id='agenda_campaign_action' model='ir.actions.act_window'>
+        <field name="name">Agenda DND</field>
+        <field name="res_model">agenda.campaign</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Mi agenda" id="agenda_base_menu" />
+    <menuitem name="Campañas" id="agenda_campaign_menu" parent="agenda_base_menu" action="agenda_campaign_action"/>
+
+    <!-- Form View -->
+    <record id="agenda_campaign_view_form" model="ir.ui.view">
+        <field name="name">Agenda Campaign Form</field>
+        <field name="model">agenda.campaign</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="make_pending" string="Pendiente" type="object"/>
+                    <button name="make_canceled"  string="Cancelada" type="object"/>
+                    <button name="make_finished"  string="Terminada" type="object"/>
+                    <button name="make_continued"  string="Continuada" type="object"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                 <header>
+                    <button name="make_presential" string="Presencial" type="object"/>
+                    <button name="make_online"  string="Online" type="object"/>
+                    <field name="play_mode" widget="statusbar"/>
+                </header>
+                <group>
+                    <group>
+                        <field name="name"/>
+                        <field name="dm_ids" widget="many2many_tags"/>
+                    </group>
+                    <group>
+                        <field name="player_count"/>
+                        <field name="game_date"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree(list) View -->
+    <record id="agenda_campaign_view_tree" model="ir.ui.view">
+        <field name="name">Lista de Campañas</field>
+        <field name="model">agenda.campaign</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name ="state"/>
+                <field name="game_date"/>
+            </tree>
+        </field>
+    </record>
+
+</odoo>

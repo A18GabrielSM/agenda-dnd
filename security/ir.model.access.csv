@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+acl_campaign,agenda.campaign_default,model_agenda_campaign,,1,0,0,0
+acl_campaign_player,agenda.campaign_player,model_agenda_campaign,group_player,1,1,1,1
